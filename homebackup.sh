@@ -32,7 +32,7 @@ else
     then
         echo "`date` - [INFO] Backup already done today" >> $LOGFILE
     else
-        echo "`date` - [INFO] Removing .backup file"
+        echo "`date` - [INFO] Removing .backup file" >> $LOGFILE
         if [[ $NETWORK == "Quinc&Eef" ]]
         then
             do_backup
