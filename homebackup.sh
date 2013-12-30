@@ -33,9 +33,12 @@ else
         echo "`date` - [INFO] Backup already done today" >> $LOGFILE
     else
         echo "`date` - [INFO] Removing .backup file" >> $LOGFILE
+        `rm ~/Documents/Work/.backup`
         if [[ $NETWORK == "Quinc&Eef" ]]
         then
             do_backup
+        else
+            echo "`date` - [ERROR] Not at my home network @ $NETWORK" >> $LOGFILE
         fi
     fi
 fi
