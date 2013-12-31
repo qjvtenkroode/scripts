@@ -2,6 +2,7 @@
 
 NETWORK=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'`
 LOGFILE=~/Documents/backups.log
+ROUTER=`arp router | grep en3 | cut -d ' ' -f 4`
 
 if [[ ! -f $LOGFILE ]]
 then
@@ -21,7 +22,7 @@ do_backup () {
 
 if [[ ! -f ~/Documents/Work/.backup ]]
 then
-    if [[ $NETWORK == "Quinc&Eef" ]]
+    if [[ $NETWORK == "Quinc&Eef" || $ROUTER == "90:6e:bb:da:19:67" ]]
     then
         do_backup
     else
@@ -34,7 +35,7 @@ else
     else
         echo "`date` - [INFO] Removing .backup file" >> $LOGFILE
         `rm ~/Documents/Work/.backup`
-        if [[ $NETWORK == "Quinc&Eef" ]]
+        if [[ $NETWORK == "Quinc&Eef" || $ROUTER == "90:6e:bb:da:19:67" ]]
         then
             do_backup
         else
