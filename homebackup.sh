@@ -2,7 +2,7 @@
 
 NETWORK=`/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk '/ SSID/ {print substr($0, index($0, $2))}'`
 LOGFILE=~/Documents/backups.log
-ROUTER=`arp router | grep en3 | cut -d ' ' -f 4`
+ROUTER=`/usr/sbin/arp router | grep en3 | cut -d ' ' -f 4`
 
 if [[ ! -f $LOGFILE ]]
 then
