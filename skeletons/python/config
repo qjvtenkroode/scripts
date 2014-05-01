@@ -1,0 +1,6 @@
+[remote "github"]
+    url = git@github.com:qjvtenkroode/NAME.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[remote "emporium"]
+    url = ssh://git@emporium/volume1/development/git/NAME.git
+    fetch = +refs/heads/*:refs/remotes/emporium/*
