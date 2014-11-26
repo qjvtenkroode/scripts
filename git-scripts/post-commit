@@ -1,9 +1,0 @@
-#!/bin/sh
-#
-dir=`pwd`
-
-scp -r $dir root@bdsh1:/opt/pooling/etc/apps/
-ssh root@bdsh1 "chown -R splunk:splunk /opt/pooling/etc/apps"
-curl -k -u admin https://bdsh1:8089/services/apps/local/doctor_splunk/_reload
-
-echo "Updated $dir on bdsh1"
