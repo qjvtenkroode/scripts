@@ -1,0 +1,25 @@
+#!/bin/sh
+sed -i "s/http:\/\/qkroode.nl\/projects\/qkroode/http:\/\/qkroode.nl\/blog/g" config.php
+if [ $? -eq 0 ]; then
+    echo "sucess on sed command"
+else
+    echo "failure in sed command"
+    exit 1
+fi
+
+
+source ~/credentials.cfg
+if [ $? -eq 0 ]; then
+    lftp -e "set ftp:ssl-allow off;mirror -R ./ ./public_html/blog;quit" -u $username,$password $host
+    if [ $? -eq 0 ]; then
+        echo "pushed commits to production server: $host"
+    else
+        echo "failed to sync, errors in lftp command"
+        exit 1
+    fi
+else
+    echo "failed to sync, errors in credentials.cfg"
+    exit 1
+fi
+
+
