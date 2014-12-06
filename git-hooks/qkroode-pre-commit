@@ -1,5 +1,5 @@
 #!/bin/sh
-sed -i "s/''/'http:\/\/qkroode.nl\/blog/g" config.php
+sed -i "s/''/'http:\/\/qkroode.nl\/blog'/g" config.php
 if [ $? -eq 0 ]; then
     echo "sucess on sed command"
 else
