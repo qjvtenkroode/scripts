@@ -39,7 +39,7 @@ start(){
         -p 80:80 \
         -v /home/quincey/projects/qkroode.nl:/app \
         -d \
-        tutum/apache-php)
+        kbrs/apache-php)
     echo "Started WEBSERVER in container $WEBSERVER"
 
     chown -R quincey:quincey $APPS
