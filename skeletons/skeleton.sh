@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PROJECTS_DIR="/Users/quincey/Documents/programming/projects"
+PROJECTS_DIR=$3
 
 # create directories
 mkdir $PROJECTS_DIR/$2/
