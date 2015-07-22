@@ -28,5 +28,4 @@ sed -i.bak "s/NAME/$2/" ./$2/.git/config
 rm ./$2/.git/config.bak
 
 # setup a virtualenv
-virtualenv ./virtualenv/$2
-source ./virtualenv/$2/bin/activate
+virtualenv ./virtualenvs/$2

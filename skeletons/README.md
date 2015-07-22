@@ -12,3 +12,4 @@ The second parameter is the projects name and is used to initialise:
 *  the folder names.
 *  a git repository.
 *  remote git repositories.
+*  a virtualenv
