@@ -1,0 +1,14 @@
+language: python
+python:
+    - "3.3"
+    - "3.4"
+    - "2.6"
+    - "2.7"
+# install dependencies
+install: 
+    - "python setup.py install"
+    - "pip install coveralls"
+# do tests
+script: coverage run --source=NAME setup.py test
+# push data to coveralls
+after_success: coveralls

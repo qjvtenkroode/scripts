@@ -27,5 +27,10 @@ cat ./scripts/skeletons/$1/config >> ./$2/.git/config
 sed -i.bak "s/NAME/$2/" ./$2/.git/config
 rm ./$2/.git/config.bak
 
+# setup travis & coveralls
+cp ./scripts/skeletons/$1/travis.yml ./$2/.travis.yml
+sed -i.bak "s/NAME/$2/" ./$2/.travis.yml
+rm ./$2/.travis.yml.bak
+
 # setup a virtualenv
 virtualenv ./virtualenvs/$2
