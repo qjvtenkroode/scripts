@@ -6,7 +6,7 @@ curl -o /boot/initrd.img http://mirror.zetup.net/CentOS/7/os/x86_64/isolinux/ini
 
 echo "### Setting content in /etc/grub.d/40_custom ###"
 echo """
-menuentry "Install CentOS 7" {
+menuentry \"Install CentOS 7\" {
     set root=(hd0,1)
     linux /vmlinuz ks=/home/quincey/projects/scripts/server/kickstart/centos7-ks.cfg
     initrd /initrd.img
