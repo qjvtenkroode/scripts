@@ -7,18 +7,24 @@ mkdir ./$2/bin
 mkdir ./$2/docs
 mkdir ./$2/tests
 
-# copy template files
-cp ./scripts/skeletons/$1/NAME_tests.py ./$2/tests/$2_tests.py
-cp ./scripts/skeletons/$1/setup.py ./$2/
-touch ./$2/README.md
-touch ./$2/$2/__init__.py
-touch ./$2/tests/__init__.py
+if [ $1 = 'python' ]; then
+    # copy template files
+    cp ./scripts/skeletons/$1/NAME_test.py ./$2/tests/$2_test.py
+    cp ./scripts/skeletons/$1/setup.py ./$2/
+    touch ./$2/$2/__init__.py
+    # rename template files
+    sed -i.bak "s/NAME/$2/" ./$2/setup.py
+    rm ./$2/setup.py.bak
+    sed -i.bak "s/NAME/$2/" ./$2/tests/$2_test.py
+    rm ./$2/tests/$2_test.py.bak
+    # setup a virtualenv
+    virtualenv ./virtualenvs/$2
+else
+    echo 'Unknown, skipping tests files'
+fi
 
-# rename template files
-sed -i.bak "s/NAME/$2/" ./$2/setup.py
-rm ./$2/setup.py.bak
-sed -i.bak "s/NAME/$2/" ./$2/tests/$2_tests.py
-rm ./$2/tests/$2_tests.py.bak
+# create readme
+touch ./$2/README.md
 
 # setup git
 git init ./$2/
@@ -31,6 +37,3 @@ rm ./$2/.git/config.bak
 cp ./scripts/skeletons/$1/travis.yml ./$2/.travis.yml
 sed -i.bak "s/NAME/$2/" ./$2/.travis.yml
 rm ./$2/.travis.yml.bak
-
-# setup a virtualenv
-virtualenv ./virtualenvs/$2
