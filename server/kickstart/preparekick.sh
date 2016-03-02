@@ -1,4 +1,4 @@
-!#/bin/sh
+#!/bin/sh
 
 echo "### Getting vmlinux and initrd.img ###"
 curl -o /boot/vmlinuz http://mirror.zetup.net/CentOS/7/os/x86_64/isolinux/vmlinuz
