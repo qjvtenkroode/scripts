@@ -6,9 +6,10 @@ python:
     - "2.7"
 # install dependencies
 install: 
-    - "python setup.py install"
+    - "make bootstrap-dev"
     - "pip install coveralls"
 # do tests
-script: coverage run --source=NAME setup.py test
+script: 
+    - "make test"
 # push data to coveralls
 after_success: coveralls
